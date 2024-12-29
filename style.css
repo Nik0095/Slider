@@ -1,0 +1,372 @@
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f0f0f0;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center; /* Центрирование по вертикали */
+      justify-content: center; /* Центрирование по горизонтали */
+    }
+
+    .slider-wrapper {
+      position: relative;
+      max-width: 1440px;
+      margin: 0 auto; /* Центрирование слайдера */
+      padding: 64px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-container {
+      position: relative;
+      max-width: 1312px;
+      max-height: 610.63px;
+      padding: 0;
+
+      overflow: hidden;
+    }
+
+    .slides {
+      max-width: 1312px;
+      max-height: 402px;
+      display: flex;
+      align-items: flex-start;
+      transition: transform 0.5s ease-in-out;
+      padding: 16px 0;
+      /* overflow: hidden; */
+    }
+
+    .slide img {
+      filter: brightness(90%);
+    }
+
+    .slide {
+      max-width: 300px;
+      flex: 0 0 300px; /* Ширина каждого слайда */
+      margin-right: 37.33px; /* Отступ между слайдами */
+      position: relative;
+      cursor: pointer;
+      justify-self: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .slide h3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      color: rgb(255, 255, 255);
+      font-family: Nokora, sans-serif;
+      font-size: 23px;
+      font-weight: 700;
+      line-height: 27px;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      max-width: 300px;
+
+      justify-self: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .title-slider {
+      position: static;
+      font-family: Nokora;
+      max-width: 701px;
+      max-height: 27px;
+      display: flex;
+      /* flex-direction: row; */
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10;
+      padding: 0px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    .title-slider h2 {
+      font-size: 32px;
+      font-weight: 400;
+      color: rgb(0, 0, 0);
+      line-height: 27px;
+      padding-bottom: 17px;
+    }
+
+    .control {
+      position: absolute;
+      top: 47.4%;
+      transform: translateY(-50%);
+      width: 72px;
+      height: 72px;
+      background: #f8f8f8;
+
+      color: #222222;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      border-radius: 50px;
+      box-shadow: 0px 9px 30px 0px rgba(206, 207, 209, 0.9);
+      background: rgb(248, 248, 248);
+      opacity: 0.96;
+    }
+    .control:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .control.left {
+      left: 28px;
+    }
+
+    .control.right {
+      right: 28px;
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .popup {
+      max-width: 880px;
+
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      padding: 48px;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      text-align: center;
+      color: rgb(0, 0, 0);
+      font-family: Nokora;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 27px;
+      letter-spacing: 0%;
+      margin: 0 0 17px;
+    }
+
+    hr {
+      position: static;
+      max-width: 752px;
+      height: 0;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+      border: 1px solid rgb(138, 138, 138);
+    }
+
+    .popup p {
+      position: static;
+      max-width: 785px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 17;
+      text-align: center;
+      order: 2;
+      flex-grow: 0;
+      margin: 17px 0px;
+      color: rgb(0, 0, 0);
+      font-family: Nokora, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 27px;
+      letter-spacing: 0%;
+      text-align: center;
+    }
+
+    .popup-close {
+      /* width: 12px;
+          height: 12px; */
+      transform: translate(24px, -24px);
+      cursor: pointer;
+      color: #997f5a;
+      float: right;
+      font-size: 18px;
+      font-weight: 100;
+    }
+
+    .scroll-control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 10px;
+    }
+
+    /* Общий стиль для точек */
+    .scroll-control .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: gray;
+      position: relative;
+    }
+
+    /* Стиль для активной точки */
+    .scroll-control .dot.active {
+      background-color: transparent;
+      border: 2px solid gray;
+      width: 30px;
+      height: 30px;
+    }
+
+    .scroll-control .dot.active::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: gray;
+    }
+    /* Адаптивные стили для мобильных устройств */
+    @media screen and (max-width: 768px) {
+      .title-slider h2 {
+        font-size: 24px;
+      }
+
+      .slider-wrapper {
+      
+position: static;
+width: 375px;
+height: 548px;
+/* Автолейаут */
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+gap: 4;
+padding: 48px 16px 64px 16px;
+
+/* Inside Auto Layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+margin: 0px 0px;
+
+
+      }
+
+      .slider-container {
+      
+   position: static;
+width: 343px;
+height: 332px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 16;
+padding: 16px 0px 16px 245px;
+
+/* Inside Auto Layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+margin: 4px 0px;
+
+      }
+      .slides {
+
+
+      }
+
+      .slide {
+      
+/* position: static; */
+width: 240px;
+height: 300px;
+
+/* flex: none; */
+order: 0;
+/* flex-grow: 0; */
+margin: 27px 10px;
+
+
+
+      }
+
+      .slide img {
+        width: 240px;
+        height: 300px;
+        margin-right: 4px;
+
+      }
+
+      .control {
+        display: none; /* Скрыть кнопки управления на мобильных экранах */
+      }
+
+      .scroll-control {
+        gap: 20px;
+        /* scrol */
+        position: static;
+        width: 156px;
+        height: 30px;
+        /* Inside Auto Layout */
+        flex: none;
+        order: 2;
+        flex-grow: 0;
+        margin: 4px 0px;
+      }
+
+      .popup {
+        /* popap */
+        position: absolute;
+        width: 343px;
+        height: 427px;
+        left: 0px;
+        top: 255px;
+
+        /* display: flex; */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 17;
+        padding: 48px;
+      }
+
+      .popup-close {
+        font-size: 16px;
+      }
+    }
